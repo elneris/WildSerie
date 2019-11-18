@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="text-center">{{ slug }}</h1>
+
+    <div class="text-center mt-5 mb-5">
+        <a class="btn btn-outline-success ml-2 mr-2" href="{{ path('wild_show', {'slug': 'ma-superbe-serie'}) }}">Slug :
+            ma-superbe-serie</a>
+        <a class="btn btn-outline-warning ml-2 mr-2" href="{{ path('wild_show') }}">No Slug</a>
+        <a class="btn btn-outline-success ml-2 mr-2" href="{{ path('wild_show', {'slug': 'house-of-cards'}) }}">Slug :
+            house-of-cards</a>
+    </div>
+
+    <div class="text-center mt-5 mb-5">
+        <a class="btn btn-outline-danger ml-2 mr-2" href="http://127.0.0.1:8000/wild/show/MaSerie">Slug :
+            MaSerie</a>
+        <a class="btn btn-outline-danger ml-2 mr-2" href="http://127.0.0.1:8000/wild/show/ma_serie">Slug : ma_serie</a>
+    </div>
+{% endblock %}

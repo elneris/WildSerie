@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Wild Serie{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Application for Wild Code School">
+    <meta name="author" content="Elneris Dang">
+
+    <title>{% block title %}Wild Serie{% endblock %}</title>
+
+    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+</head>
+
+<body class="text-center">
+
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    {% include '_inc/_header.html.twig' %}
+
+    <div role="main" class="inner cover">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+
+    {% include '_inc/_footer.html.twig' %}
+</div>
+
+{% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+</body>
 </html>

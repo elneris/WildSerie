@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de films par catégorie{% endblock %}
+
+{% block body %}
+
+    <div class="text-center mt-5 mb-5">
+        <a class="btn btn-outline-danger ml-2 mr-2" href="{{ path('wild_category', { 'categoryName': "Action" }) }}">Action</a>
+        <a class="btn btn-outline-success" href="{{ path('wild_category', { 'categoryName': "horreur" }) }}">
+            horreur
+        </a>
+        <a class="btn btn-outline-danger ml-2 mr-2" href="{{ path('wild_category', { 'categoryName': "Romance" }) }}">Romance</a>
+    </div>
+
+    {% if category is null %}
+
+        <h1 class="text-center mt-5">Aucune catégorie existante à ce nom <span class="text-info">{{ categoryName | capitalize}}</h1></span>
+
+    {% else %}
+
+        {% if movies is null %}
+
+            <h1 class="text-center mt-5">Il n'y a pas de film dans la catégorie : {{ categoryName }}</h1>
+
+        {% else %}
+
+            {% include '_inc/_back.html.twig' %}
+
+            <h1 class="text-center mt-5">Liste des films : {{ categoryName }}</h1>
+            <div class="row justify-content-center mt-5">
+                {% for movie in movies %}
+
+                    <div class="card text-white bg-secondary mb-5 mr-2 ml-2 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card-header">{{ categoryName }}</div>
+                        <div class="card-body">
+                            <a href=""></a><h5 class="card-title">{{ movie.id }} / {{ movie.title }}</h5>
+                            <p class="card-text">{{ movie.summary }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

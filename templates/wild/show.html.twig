@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% if program is not null %}
+        {% include '_inc/_back.html.twig' %}
+    {% endif %}
     <h1 class="text-center">{{ slug }}</h1>
 
     <div class="text-center mt-5 mb-5">
@@ -14,6 +17,20 @@
     <div class="text-center mt-5 mb-5">
         <a class="btn btn-outline-danger ml-2 mr-2" href="http://127.0.0.1:8000/wild/show/MaSerie">Slug :
             MaSerie</a>
+        <a class="btn btn-outline-success" href="{{ path('wild_show', { 'slug': "walking-dead" }) }}">
+            Slug : walking-dead
+        </a>
         <a class="btn btn-outline-danger ml-2 mr-2" href="http://127.0.0.1:8000/wild/show/ma_serie">Slug : ma_serie</a>
     </div>
+
+    {% if program is not null %}
+        <div class="media">
+            <img class="align-self-start mr-3" src="{{ program.poster }}" alt="{{ program.title }} poster">
+            <div class="media-body">
+                <h1 class="mt-0">{{ program.title }}</h1>
+                <p>{{ program.summary }}</p>
+                <p>Categorie : {{ program.category.name }}</p>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
